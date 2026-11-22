@@ -11,7 +11,7 @@
 ## Still Pending Owner Verification (Placeholders / Omitted)
 - [ ] **Verified Email:** Set `PROFILE.email` in `src/data/profile.ts`
 - [ ] **GitHub & LinkedIn URLs:** Add verified URLs to `src/data/socialLinks.ts`
-- [ ] **Profile Photo (Optional):** Add image to `public/images/profile/` and set `PROFILE.profileImage`
+- [x] **Profile Photo:** Verified at `public/images/profile.png.jpeg` and linked in `src/data/profile.ts`
 - [ ] **Resume PDF:** Place approved file at `public/files/resume.pdf` and set `PROFILE.resumeUrl`
 - [ ] **Master's Degree Details:** Confirm ongoing institution and subject in `src/data/education.ts`
 - [ ] **Training Dates & Provider:** Confirm exact training provider and dates in `src/data/education.ts`

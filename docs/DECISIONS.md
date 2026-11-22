@@ -16,3 +16,4 @@
 7. **Skills & Services:** Use evidence-based skill categories without unsupported proficiency claims; include Services only with honest placeholders until confirmed.
 8. **Dependency Discipline:** Installed only `react`, `react-dom`, `react-router-dom`, and `lucide-react` as runtime dependencies; excluded Redux, Axios, React Query, and heavy animation libraries.
 9. **Git Initialization:** Initialized local Git repository (`git init`) only after confirming no `.git` directory existed.
+10. **Hero Portrait & 3D Workspace Scene:** Added a zero-dependency CSS 3D-perspective interactive workspace card (`HeroScene.tsx`, respects `prefers-reduced-motion`) and wired conditional `PROFILE.profileImage` rendering in `HeroSection.tsx` for when the owner supplies their portrait file.

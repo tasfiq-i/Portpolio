@@ -9,7 +9,7 @@ export const PROFILE: Profile = {
     'Junior Full Stack Software Engineer targeting Full Stack Developer roles across software companies, remote teams, and freelance engagements. Focused on React, TypeScript, C#, ASP.NET Core / MVC, SQL Server, and Entity Framework Core with responsible AI-assisted development and manual verification.',
   location: 'Bangladesh',
   email: undefined,
-  profileImage: undefined,
+  profileImage: '/images/profile.png.jpeg',
   resumeUrl: undefined,
   availability: {
     openToJobs: true,
