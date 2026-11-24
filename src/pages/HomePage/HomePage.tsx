@@ -1,11 +1,11 @@
 import { SEO } from '../../components/shared/SEO';
 import { PROFILE } from '../../data/profile';
 import { AboutPreviewSection } from './sections/AboutPreviewSection';
-import { ContactCTASection } from './sections/ContactCTASection';
 import { DevelopmentApproachSection } from './sections/DevelopmentApproachSection';
 import { ExpertiseSection } from './sections/ExpertiseSection';
 import { FeaturedProjectsSection } from './sections/FeaturedProjectsSection';
 import { HeroSection } from './sections/HeroSection';
+import { MarqueeSection } from './sections/MarqueeSection';
 import { TechStackSection } from './sections/TechStackSection';
 
 export function HomePage() {
@@ -16,12 +16,12 @@ export function HomePage() {
         description={PROFILE.tagline}
       />
       <HeroSection />
-      <TechStackSection />
-      <AboutPreviewSection />
+      <MarqueeSection />
       <FeaturedProjectsSection />
-      <ExpertiseSection />
+      <AboutPreviewSection />
+      <TechStackSection />
       <DevelopmentApproachSection />
-      <ContactCTASection />
+      <ExpertiseSection />
     </>
   );
 }

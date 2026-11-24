@@ -11,11 +11,13 @@ export function FeaturedProjectsSection() {
   );
 
   return (
-    <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] py-16">
+    <section className="border-b border-[var(--line)] py-20 sm:py-28">
       <Container>
         <SectionHeading
+          index="01"
           eyebrow="Selected Work"
-          title="Featured Projects"
+          title="Featured"
+          accent="projects."
           subtitle="Projects and architecture case studies labeled honestly by current development and verification status."
           action={
             <Button to="/projects" variant="secondary" size="sm">
@@ -25,7 +27,7 @@ export function FeaturedProjectsSection() {
           }
         />
 
-        <div className="mt-8">
+        <div className="mt-12">
           <ProjectGrid projects={featuredProjects} />
         </div>
       </Container>

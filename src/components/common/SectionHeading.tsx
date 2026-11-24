@@ -1,9 +1,15 @@
 import type { ReactNode } from 'react';
+import { Reveal } from '../motion/Reveal';
+import { WordReveal } from '../motion/WordReveal';
 
 interface SectionHeadingProps {
   title: string;
+  /** Closing word(s) shown in the serif-italic accent style. */
+  accent?: string;
   subtitle?: string;
   eyebrow?: string;
+  /** Section number shown before the eyebrow, e.g. "01". */
+  index?: string;
   action?: ReactNode;
   className?: string;
   as?: 'h1' | 'h2';
@@ -11,38 +17,53 @@ interface SectionHeadingProps {
 
 export function SectionHeading({
   title,
+  accent,
   subtitle,
   eyebrow,
+  index,
   action,
   className = '',
   as = 'h2',
 }: SectionHeadingProps) {
-  const HeadingTag = as;
-  const headingSize =
-    as === 'h1' ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl';
+  const headingSize = as === 'h1' ? 'text-display' : 'text-h1';
 
   return (
     <div
-      className={`flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between ${className}`}
+      className={`flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between ${className}`}
     >
-      <div className="max-w-2xl">
-        {eyebrow && (
-          <p className="text-xs font-semibold tracking-wider text-[var(--accent-primary)] uppercase">
-            {eyebrow}
-          </p>
+      <div className="max-w-3xl">
+        {(eyebrow || index) && (
+          <Reveal y={10}>
+            <p className="eyebrow">
+              {index && (
+                <>
+                  <span className="text-[var(--ink-muted)]">{index}</span>
+                  <span className="mx-2 text-[var(--ink-faint)]">/</span>
+                </>
+              )}
+              <span className="text-[var(--accent)]">{eyebrow}</span>
+            </p>
+          </Reveal>
         )}
-        <HeadingTag
-          className={`mt-1 font-bold tracking-tight text-[var(--text-primary)] ${headingSize}`}
-        >
-          {title}
-        </HeadingTag>
+        <WordReveal
+          as={as}
+          text={title}
+          accent={accent}
+          className={`mt-4 font-display text-[var(--ink)] ${headingSize}`}
+        />
         {subtitle && (
-          <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
-            {subtitle}
-          </p>
+          <Reveal delay={0.15}>
+            <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-[var(--ink-muted)] sm:text-lg">
+              {subtitle}
+            </p>
+          </Reveal>
         )}
       </div>
-      {action && <div className="shrink-0">{action}</div>}
+      {action && (
+        <Reveal delay={0.2} className="shrink-0">
+          {action}
+        </Reveal>
+      )}
     </div>
   );
 }

@@ -1,41 +1,51 @@
 import { Code2, Database, Wrench } from 'lucide-react';
 import { Container } from '../../../components/common/Container';
 import { SectionHeading } from '../../../components/common/SectionHeading';
+import { Stagger, StaggerItem } from '../../../components/motion/Reveal';
 import { SERVICES } from '../../../data/services';
+import { formatIndex } from '../../../lib/projectMeta';
 
 const SERVICE_ICONS = [Code2, Database, Wrench];
 
 export function ExpertiseSection() {
   return (
-    <section className="border-b border-[var(--border-subtle)] py-16">
+    <section className="py-20 sm:py-28">
       <Container>
         <SectionHeading
+          index="05"
           eyebrow="Services (Draft)"
-          title="How I Can Help"
+          title="How I can"
+          accent="help."
           subtitle="Areas aligned with my current project stack. Specific project scope and timelines are discussed per inquiry."
         />
 
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <Stagger className="mt-12 divide-y divide-[var(--line-strong)] border-y border-[var(--line-strong)]">
           {SERVICES.map((service, index) => {
             const Icon = SERVICE_ICONS[index % SERVICE_ICONS.length];
             return (
-              <div
+              <StaggerItem
                 key={service.id}
-                className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6"
+                className="group grid grid-cols-1 items-start gap-4 py-8 transition-colors sm:grid-cols-12 sm:items-center sm:gap-6"
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                <div className="flex items-center gap-4 sm:col-span-5">
+                  <span className="font-mono text-xs text-[var(--ink-faint)]">
+                    {formatIndex(index + 1)}
+                  </span>
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--r-sm)] border border-[var(--line-strong)] bg-[var(--surface)] text-[var(--accent)] transition-colors group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-white">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-[var(--text-primary)]">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+
+                <p className="text-sm leading-relaxed text-[var(--ink-muted)] sm:col-span-7 sm:text-base">
                   {service.description}
                 </p>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </Container>
     </section>
   );

@@ -6,20 +6,20 @@ type ButtonSize = 'sm' | 'md';
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-hover)] border border-transparent',
+    'border border-transparent bg-[var(--ink)] text-[var(--bg)] hover:-translate-y-0.5 hover:bg-[var(--accent)] hover:text-white hover:shadow-[0_10px_40px_var(--accent-glow)]',
   secondary:
-    'bg-[var(--bg-surface)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]',
+    'border border-[var(--line-strong)] bg-[var(--surface)] text-[var(--ink)] hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]',
   ghost:
-    'bg-transparent text-[var(--text-secondary)] border border-transparent hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)]',
+    'border border-transparent bg-transparent text-[var(--ink-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]',
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-xs',
-  md: 'px-4 py-2 text-sm',
+  sm: 'h-9 px-4 text-sm',
+  md: 'h-12 px-6 text-[0.95rem]',
 };
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors disabled:pointer-events-none disabled:opacity-50';
+  'btn inline-flex items-center justify-center gap-2 rounded-[var(--r-sm)] font-display font-semibold tracking-[-0.01em] transition-[transform,background-color,color,border-color,box-shadow] duration-200 ease-[var(--ease-out-expo)] active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50';
 
 interface SharedButtonProps {
   variant?: ButtonVariant;

@@ -1,7 +1,7 @@
 import type { Profile } from '../types';
 
 export const PROFILE: Profile = {
-  name: 'Tasfiq',
+  name: 'Tasfiqul Islam',
   title: 'Junior Full Stack Software Engineer',
   tagline:
     'Full Stack Developer building practical web applications with React, TypeScript, C#, ASP.NET Core, and SQL Server.',

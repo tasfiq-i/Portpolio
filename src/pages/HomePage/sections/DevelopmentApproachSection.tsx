@@ -1,6 +1,8 @@
 import { Bot, CheckSquare, GitBranch, ShieldCheck } from 'lucide-react';
 import { Container } from '../../../components/common/Container';
 import { SectionHeading } from '../../../components/common/SectionHeading';
+import { Stagger, StaggerItem } from '../../../components/motion/Reveal';
+import { formatIndex } from '../../../lib/projectMeta';
 
 const PRACTICES = [
   {
@@ -31,37 +33,51 @@ const PRACTICES = [
 
 export function DevelopmentApproachSection() {
   return (
-    <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] py-16">
+    <section className="border-b border-[var(--line)] bg-[var(--surface)]/35 py-20 sm:py-28">
       <Container>
         <SectionHeading
+          index="04"
           eyebrow="Engineering & AI Workflow"
-          title="Development Approach"
+          title="Development"
+          accent="approach."
           subtitle="Practical engineering habits paired with human-verified AI assistance."
         />
 
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {PRACTICES.map((item) => {
+        <Stagger className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {PRACTICES.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <StaggerItem
                 key={item.title}
-                className="flex gap-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-5"
+                className="group relative overflow-hidden rounded-[var(--r-lg)] border border-[var(--line-strong)] bg-[var(--surface)] p-6 transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--accent)]/50 sm:p-7"
               >
-                <div className="mt-0.5 shrink-0 text-[var(--accent-primary)]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-2 right-5 select-none font-display text-6xl font-extrabold text-[var(--accent)] opacity-[0.08] transition-opacity group-hover:opacity-[0.16]"
+                >
+                  {formatIndex(index + 1)}
+                </span>
+
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--r-sm)] border border-[var(--accent)]/30 bg-[var(--accent)]/10 text-[var(--accent)]">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="eyebrow text-[var(--accent)]">
+                      Step {formatIndex(index + 1)}
+                    </p>
+                    <h3 className="mt-1 font-display text-lg font-bold text-[var(--ink)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-muted)] sm:text-base">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </Container>
     </section>
   );

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Container } from '../../components/common/Container';
 import { SectionHeading } from '../../components/common/SectionHeading';
+import { Reveal } from '../../components/motion/Reveal';
 import {
   ProjectFilter,
   type ProjectFilterValue,
@@ -27,22 +28,24 @@ export function ProjectsPage() {
         title="Projects — Portfolio"
         description="Full-stack, backend API, and system architecture projects with truthful status labels."
       />
-      <Container className="py-16">
+      <Container className="py-16 sm:py-24">
         <SectionHeading
           as="h1"
+          index="01"
           eyebrow="Portfolio"
-          title="Projects & Case Studies"
+          title="Projects & case"
+          accent="studies."
           subtitle="Each project reflects its actual current development and verification status. Architecture case studies are labeled explicitly."
         />
 
-        <div className="mt-8">
+        <Reveal delay={0.15} className="mt-10">
           <ProjectFilter
             selected={selectedCategory}
             onChange={setSelectedCategory}
           />
-        </div>
+        </Reveal>
 
-        <div className="mt-8">
+        <div className="mt-10">
           <ProjectGrid projects={filteredProjects} />
         </div>
       </Container>

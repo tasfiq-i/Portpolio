@@ -4,13 +4,13 @@ export type BadgeVariant = 'neutral' | 'accent' | 'success' | 'warning';
 
 const VARIANT_CLASSES: Record<BadgeVariant, string> = {
   neutral:
-    'border-[var(--border-subtle)] bg-[var(--bg-elevated)] text-[var(--text-secondary)]',
+    'border-[var(--line-strong)] bg-[var(--surface-2)] text-[var(--ink-muted)]',
   accent:
-    'border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]',
+    'border-[var(--accent)]/35 bg-[var(--accent)]/10 text-[var(--accent)]',
   success:
-    'border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+    'border-[var(--accent-2)]/35 bg-[var(--accent-2)]/10 text-[var(--accent-2)]',
   warning:
-    'border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400',
+    'border-[var(--highlight)]/35 bg-[var(--highlight)]/10 text-[var(--highlight)]',
 };
 
 interface BadgeProps {
@@ -26,7 +26,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${VARIANT_CLASSES[variant]} ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[0.68rem] font-medium tracking-[0.08em] uppercase ${VARIANT_CLASSES[variant]} ${className}`}
     >
       {children}
     </span>

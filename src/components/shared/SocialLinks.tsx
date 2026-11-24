@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Linkedin } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { SOCIAL_LINKS } from '../../data/socialLinks';
 
 interface SocialLinksProps {
@@ -24,24 +24,25 @@ export function SocialLinks({
   if (SOCIAL_LINKS.length === 0) {
     if (!showEmptyNote) return null;
     return (
-      <p className="text-xs text-[var(--text-secondary)]">
+      <p className="font-mono text-xs text-[var(--ink-faint)]">
         Verified GitHub and LinkedIn links will appear here once confirmed.
       </p>
     );
   }
 
   return (
-    <ul className={`flex flex-wrap items-center gap-3 ${className}`}>
+    <ul className={`flex flex-wrap items-center gap-2.5 ${className}`}>
       {SOCIAL_LINKS.map((link) => (
         <li key={link.platform}>
           <a
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-primary)] hover:text-[var(--text-primary)]"
+            className="nudge inline-flex items-center gap-2 rounded-full border border-[var(--line-strong)] bg-[var(--surface)] px-3.5 py-1.5 font-mono text-xs font-medium text-[var(--ink-muted)] transition-[transform,color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]"
           >
             {getPlatformIcon(link.platform)}
             <span>{link.label}</span>
+            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </a>
         </li>
       ))}

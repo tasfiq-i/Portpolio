@@ -2,7 +2,9 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#070b14" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Portfolio — Junior Full Stack Software Engineer</title>
     <meta
@@ -15,12 +17,18 @@
       property="og:description"
       content="Portfolio of Tasfiq — Junior Full Stack Software Engineer focused on React, TypeScript, C#, ASP.NET Core, and SQL Server."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Apply saved theme before first paint (dark is the default). -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('portfolio-theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#f6f7fb');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
